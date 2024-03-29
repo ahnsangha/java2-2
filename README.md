@@ -68,7 +68,80 @@
     * opr1?opr2:opr3  
     * opr1이 true이면 연산식의 결과는 opr2, false이면 opr3  
 
+**조건문 - 단순 if 문, if else 문**   
+* 단순 if문 - if의 괄호 안에 조건식(논리형 변수나 논리 연산)  
+    if(n%2 == 0)  {  
+        System.out.print(n);  
+        System.out.println("은 짝수입니다.");
+}  
+* if-else 문 - 조건식이 true면 실행문장1, false이면 실행문장2 실행  
+    if(score >= 90)  
+        System.out.println("합격입니다.");  
+    else  
+        System.out.println("합격입니다."); 
 
+**if, else if와 Scanner로 월 입력에 따른 계절 출력**   
+~~~java  
+import java.util.Scanner;
+public class Season {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("월(1 ~ 12)을 입력하시오");
+        int month = scanner.nextInt();
+
+        if(month < 6 && month > 2){
+            System.out.println("봄입니다.");
+        }
+        else if(month < 9 && month > 5){
+            System.out.println("여름입니다.");
+        }
+        else if(month < 12 && month > 8){
+            System.out.println("가을입니다.");
+        }
+        else if(month > 12){
+            System.out.println("잘못된 입력입니다.");
+        }
+        else{
+            System.out.println("겨울입니다.");
+        }
+        scanner.close();
+    }
+}  
+~~~  
+**for 문을 활용해 구구단 출력**
+~~~ java  
+public class Ex3_4 {
+
+    public static void main(String[] args) {
+        
+        for(int i = 1; i < 10; i++){
+            for(int j = 1; j < 10; j++){
+                System.out.print(i + "x" + j + "=" + i*j);
+                System.out.print('\t');
+            }
+            System.out.println();
+        }
+    }
+}
+~~~
+**자바 배열**  
+* 배열
+    * 인덱스와 인덱스에 대응하는 데이터들로 이루어진 자료 구조  
+        * 배열을 이용하면 한 번에 많은 메모리 공간 선언 가능  
+    * 배열은 같은 타입의 데이터들이 순차적으로 저장되는 공간 이다.    
+
+**배열 선언 및 생성 디테일**  
+* 배열 선언과 배열 생성의 두 단계 필요  
+* 배열 선언  
+    * 배열의 이름 선언(배열 레퍼런스 변수 선언)  
+    int intArray []; 또는 int[] intArray;  
+* 배열 인덱스  
+    * 배열의 인덱스는 0 ~ (배열 크기는 1)  
+    int intArray = new int[5]; //인덱스는 0~4까지 가능  
+    intArray[0] = 5;  // 원소 0에 5 저장  
+    intArray[3] = 6; // 원소 3에 6 저장  
+    int n = intArray[3];  // n의 값을 원소 3의 값으로 저장  
 
 ## 3월 22일
 **자바의 플랫폼 독립성, WORA**    
