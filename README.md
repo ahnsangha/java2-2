@@ -96,6 +96,72 @@ public class Ex3_13 {
     * 멤버 : 클래스 구성 요소  
     * 클래스에 대한 public 접근 지정 : 다른 모든 클래스에서 클래스 사용 허락  
     * 멤버에 대한 public 접근 지정 : 다른 모든 클래스에게 멤버 접근 허용  
+
+**클래스를 이용한 사각형 넓이 구하기**
+~~~ java 
+import java.util.Scanner;
+
+public class Ex4_02 {
+    public static void main(String[] args) {
+    Rectangle rect = new Rectangle(); 
+    Scanner scanner= new Scanner(System.in);
+    System.out.print(">> 사각형의 가로 길이");
+    rect.width = scanner.nextInt();
+    System.out.print(">> 사각형의 세로 길이");
+    rect.height = scanner.nextInt(); 
+    System.out.println("사각형의 면적은 " + rect.getArea());
+    scanner.close();
+    }
+}
+
+class Rectangle {
+    int width;
+    int height;
+    public int getArea() {
+        return width*height;
+    }
+}
+~~~
+
+**메소드**  
+* 메소드는 C/C++의 함수와 동일  
+* 자바의 모든 메소드는 반드시 클래스 안에 있어야 함 (캡슐화 원칙)  
+
+**메소드 오버로딩**  
+* 오버로딩  
+    * 한 클래스 내에서 두 개 이상의 이름이 같은 메소드 작성
+
+**객체 소멸**  
+* 객체 소멸  
+    * new에 의해 할당 받은 객체와 배열 메모리를 자바 가상 기계로 되돌려 주는 행위  
+    * 소멸된 객체 공간은 가용 메모리에 포함  
+* 자바에서 사용자 임의로 객체 소멸이 안된다.  
+    * 자바는 객체 소멸 연산자 없음  
+        * 객체 생성 연산자 : new  
+    * 객체 소멸은 자바 가상 기계의 고유한 역할  
+
+**가비지**  
+* 가비지  
+    * 가리키는 레퍼런스가 하나도 없는 객체  
+        * 더 이상 접근할 수 없어 사용할 수 없게 된 메모리  
+    * 가비지 컬렉션  
+        * 자바 가상 기계의 가비지 컬렉터가 자동으로 가비지 수집, 반환  
+
+**가비지 컬렉션** 
+* 가비지 컬렉션  
+    * 자바 가상 기계가 가비지 자동 회수  
+        * 가용 메모리 공간이 일정 이하로 부족해질 때  
+        * 가비지를 수거하여 가용 메모리 공간으로 확보  
+    * 가비지 컬렉터에 의해 자동 수행  
+* 강제 가비지 컬렉션 강제 수행  
+    * System 또는 Runtime 객체의 gc() 메소드 호출  
+        System.gc();  
+
+**자바의 패키지 개념**  
+* 패키지  
+    * 상호 관련 있는 클래스 파일(컴파일 된 .class)을 저장하여 관리하는 디렉터리  
+    * 자바 응용프로그램은 하나 이상의 패키지로 구성  
+
 ## 3월 29일   
 **실수 리터럴**  
 * 소수점 형태나 지수 형태로 표현한 실수  
