@@ -1,6 +1,120 @@
 # 안상하 202130311
 
-<!-- 4월 12일 -->
+<!-- 4월 19일 -->
+
+## 4월 12일  
+**접근 지정자**  
+* 자바의 접근 지정자  
+    * private, protected, public, 디폴트(접근지정자 생략)  
+* 접근 지정자의 목적  
+    * 클래스나 일부 멤버를 공개하여 다른 클래스에서 접근하도록 허용  
+
+**클래스 접근 지정**  
+* 클래스 접근 지정  
+    * 다른 클래스에서 사용하도록 허용할 지 지정  
+    * public 클래스  
+        * 다른 모든 클래스에게 접근 허용  
+    * 디폴트 클래스(접근지정자 생략)  
+        * package-private라고도 함  
+        * 같은 패키지의 클래스에만 접근 허용  
+    
+**멤버 접근 지정**  
+* public 멤버  
+    * 패키지에 관계없이 모든 클래스에게 접근 허용  
+* private 멤버  
+    * 동일 클래스 내에만 접근 허용  
+    * 상속 받은 서브 클래스에서 접근 불가  
+* protected 멤버  
+    * 같은 패키지 내의 다른 모든 클래스 접근 허용
+* 디폴트(default)멤버      
+    * 패키지 내의 다른 클래스에게 접근 허용
+
+**static 멤버**  
+* static 멤버 선언  
+~~~ java
+class StaticSample {
+    int n;   // non-static 필드  
+    void g() // non-static 메소드
+
+    static int m;     // static 필드  
+    static void f();  // static 메소드
+} 
+~~~  
+* 객체 생성과 non-static 멤버의 생성  
+    * non-static 멤버는 객체가 생성될 때, 객체마다 생긴다.  
+
+**static 멤버의 생성**  
+* static 멤버는 클래스당 하나만 생성  
+* 객체들에 의해 공유됨
+
+**static 멤버 사용**  
+* 클래스 이름으로 접근 가능  
+~~~ java
+StaticSample.m = 3; // 클래스 이름으로 static 필드 접근
+StaticSample.f(); // 클래스 이름으로 static 메소드 호출
+~~~
+* 객체의 멤버로 접근 가능  
+~~~ java
+StaticSample b1 = new StaticSample();
+
+b1.m = 3; //객체 이름으로 static 필드 접근
+b1.f();   //객체 이름으로 static 메소드 호출
+~~~
+* non-static 멤버는 클래스 이름으로 접근 안 됨  
+~~~ java
+StaticSample.n  = 5;  //n은 non-static이므로 컴파일 오류
+StaticSample.g();     //g()는 non-static이므로 컴파일 오류
+~~~
+
+**static 메소드의 제약 조건 **  
+* static 메소드는 오직 static 멤버만 접근 가능  
+    * 객체가 생성되지 않은 상황에서도 static 메소드는 실행될 수 있기 때문에 non-static 멤버는 접근 불가능  
+* static 메소드는 this 사용불가  
+    * static 메소드는 객체 없이도 사용 가능하므로, this 레퍼런스 사용할 수 없음  
+
+**final 클래스와 메소드**  
+* final 클래스 - 더 이상 클래스 상속 불가능  
+~~~ java
+final class FinalClass {
+}
+class DerivedClass extends FinalClass { //컴파일 오류
+
+}
+~~~
+* final 메소드 - 더 이상 오버라이딩 불가능  
+~~~ java
+public class SuperClass {
+    protected final int finalMetohd()(...)
+}
+class SubClass extends SuperClass {
+    protected int finalMethod()(...) //컴파일 오류
+}
+~~~
+
+* final 필드, 상수 선언  
+    * 상수를 선언할 때 사용
+    ~~~ java
+    class SharedClass {
+        public static final double Pi = 3.14;
+    }
+    ~~~
+    * 상수 필드는 선언 시에 초기 값을 지정하여야 한다  
+    * 상수 필드는 실행 중에 값을 변경할 수 없다
+    ~~~ java
+    public class FinalFieldClass {
+        final int ROWS = 10; //상수 정의, 이때 초기 값(10)을 반드시 실행
+        void f() {
+            int[]intArray = new int [ROWS];//상수 활용
+            ROWS = 30; //컴파일 오류 발생. final 필드 값을 변경할 수 없다.
+        }
+    }
+    ~~~
+
+**자바 상속의 특징**  
+* 클래스 다중 상속 불허  
+    * c++는 다중 상속 가능  
+        * c++는 다중 상속으로 멤버가 중복 생성되는 문제 있음  
+
 
 ## 4월 5일  
 **2차원 배열**  
