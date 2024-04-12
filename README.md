@@ -72,6 +72,27 @@ StaticSample.g();     //g()는 non-static이므로 컴파일 오류
 * static 메소드는 this 사용불가  
     * static 메소드는 객체 없이도 사용 가능하므로, this 레퍼런스 사용할 수 없음  
 
+**static 메소드 예시**
+~~~ java
+public class Ex4_11 {
+
+class Calc {
+    public static int abs(int a) {return a>0?a:-a;}
+    public static int max(int a, int b) {return (a>b)?a:b;}
+    public static int min(int a, int b) {return (a>b)?b:a;}
+    }
+
+public class CalcEx {
+    public static void main(String[] args) {
+        System.out.println(Calc.abs(-5));
+        System.out.println(Calc.max(10,8));
+        System.out.println(Calc.min(-3,-8));
+        }
+    }
+}
+
+~~~
+
 **final 클래스와 메소드**  
 * final 클래스 - 더 이상 클래스 상속 불가능  
 ~~~ java
@@ -114,6 +135,73 @@ class SubClass extends SuperClass {
 * 클래스 다중 상속 불허  
     * c++는 다중 상속 가능  
         * c++는 다중 상속으로 멤버가 중복 생성되는 문제 있음  
+
+**자바 상속 extends 예시**  
+~~~ java
+class Point {
+    private int x,y;
+    public void set(int x, int y){
+        this.x = x;
+        this.y = y;
+    }
+    public void showPoint(){
+        System.out.println("(" + x + ","+ y +")");
+    }
+}
+
+class ColorPoint extends Point {
+    private String color;
+    public void setColor(String color){
+        this.color = color;
+    }
+    public void showColorPoint() {
+        System.out.print(color);
+        showPoint();
+    }
+}
+
+public class Ex5_01 {
+    public static void main(String[] args) {
+        Point p = new Point();
+        p.set(1, 2);
+        p.showPoint();
+
+        ColorPoint cp = new ColorPoint();
+        cp.set(3, 4);
+        cp.setColor("red");
+        cp.showColorPoint();
+    }
+}
+
+~~~
+
+**서브 클래스와 슈퍼 클래스의 생성자 선택**  
+* 슈퍼 클래스와 서브 클래스  
+    * 각각 여러 개의 생성자 작성 가능  
+* 서브 클래스의 객체가 생성될 때  
+    * 슈퍼 클래스 생성자 1개와 서브 클래스 생성자 1개가 실행  
+* 서브 클래스의 생성자와 슈퍼 클래스의 생성자가 결정되는 방식  
+    1. 개발자의 명시적 선택  
+        * 서브 클래스 개발자가 슈퍼 클래스의 생성자를 선택하지 않는 경우  
+        * super()키워드를 이용하여 선택
+    2. 컴파일러가 기본생성자 선택  
+        * 서브 클래스 개발자가 슈퍼 클래스의 생성자를 선택하지 않는 경우  
+        * 컴파일러가 자동으로 슈퍼 클래스의 기본 생성자 선택
+
+**업캐스팅**  
+* 서브 클래스 레퍼런스를 슈퍼 클래스 레퍼런스에 대입  
+
+**다운캐스팅**  
+* 슈퍼 클래스 레퍼런스를 서브 클래스 레퍼런스에 대입  
+* 업캐스팅 된 것을 다시 원래대로 되돌리는 것  
+* 반드시 명시적 타입 변환 지정  
+~~~ java
+class Person()
+class Student extends Person()
+
+Person p = new Student("ㄱㄱㄱ") //업캐스팅
+Student = (Student)p;//다운캐스팅
+~~~
 
 
 ## 4월 5일  
