@@ -60,9 +60,10 @@ public class VectorEx {
         }
 
         int sum =  0;
+
         for(int i=0; i<v.size(); i++) {
-                int n = v.elementAt(i);
-                sum += n;   
+            int n = v.elementAt(i);
+            sum += n;   
         }
         System.out.println("벡터에 있는 정수 합" + sum);
     }
@@ -102,7 +103,7 @@ public static void main(String[] args) {
     
     while(it.hasNext()) {
         int n = it.next();
-         System.out.println(n);
+        System.out.println(n);
 }
 
     int sum = 0;
@@ -127,8 +128,160 @@ public static void main(String[] args) {
     * 요소 삽입 : put() 메소드  
     * 요소 검색 : get() 메소드  
 
+**HashMap 사용 예시**
+
+~~~java
+import java.util.*;
+public class HashMapDicEx {
+
+    public static void main(String[] args) {
+
+    HashMap<String, String> dic = new HashMap<String, String>();
+
+    dic.put("baby", "아기"); 
+    dic.put("love", "사랑");
+    dic.put("apple", "사과");
+
+    Set<String> keys = dic.keySet(); 
+    Iterator<String> it = keys.iterator();
+        
+        while(it.hasNext()) {
+            String key = it.next();
+            String value = dic.get(key);
+            System.out.print("(" + key + "," + value + ")");
+    }
+        System.out.println();
+
+        Scanner scanner = new Scanner(System.in);
+            for(int i=0; i<3; i++) {
+                System.out.print("찾고 싶은 단어는?");
+        String eng = scanner.next();
+        String kor = dic.get(eng);
+            if(kor == null)
+                System.out.println(eng + "는 없는 단어 입니다.");
+            else
+            System.out.println(kor);
+        }
+    }
+}
+~~~
+**자바의 GUI(Graphical User Interface)**  
+* GUI 응용프로그램  
+    * GUI  
+        * 사용자가 편리하게 입출력 할 수 있도록 그래픽으로 화면을 구성하고, 마우스나 키보드로 입력받을 수 있도록 지원하는 사용자 인터페이스
+* 자바 언어에서 GUI 응용프로그램 작성
+    * AWT와 Swing 패키지에 강력한 GUI 컴포넌트 제공
+        * 쉬운 GUI 프로그래밍  
+* AWT와 Swing 패키지  
+    * AWT(Abstract Windowing Toolkit) 패키지
+        * 자바가 처음 나았을 때부터 배포된 GUI 패키지, 최근에는 거의 사용하지 않음
+        * AWT 컴포넌트는 중량 컴포넌트(heavy weight component)
+* Swing 패키지
+    * AWT 기술을 기반으로 작성된 자바 라이브러리
+    * 모든 AWT 기능 + 추가된 풍부하고 화려한 고급 컴포넌트
+    * AWT 컴포넌트를 모두 스윙으로 재작성. AWT 컴포넌트 이름 앞에 J자를 덧붙임
+    * 순수 자바 언어로 구현
+    * 스윙 컴포넌트는 경량 컴포넌트(light weight component)
+    * 현재 자바의 GUI로 사용됨  
+
+**컨테이너와 컴포넌트**  
+* 컨테이너
+    * 다른 컴포넌트를 포함할 수 있는 GUI 컴포넌트
+        * java.awt.Container를 상속받음
+    * 다른 컨테이너에 포함될 수 있음
+        * AWT 컨테이너 : Panel, Frame, Applet, Dialog, Window
+        * Swing 컨테이너 : JPanel JFrame, JApplet, JDialog, JWindow
+* 컴포넌트
+    * 컨테이너에 포함되어야 화면에 출력될 수 있는 GUI 객체
+    * 다른 컴포넌트를 포함할 수 없는 순수 컴포넌트
+    * 모든 GUI 컴포넌트가 상속받는 클래스 : java.awt.Component
+    * 스윙 컴포넌트가 상속받는 클래스 : javax.swing.JComponent
+* 최상위 컨테이너
+    * 다른 컨테이너에 포함되지 않고도 화면에 출력되며 독립적으로 존재 가능한 컨테이너
+        * 스스로 화면에 자신을 출력하는 컨테이너 : JFrame, JDialog, JApplet
+
+**스윙 GUI 프로그램 만들기**  
+* 스윙 GUI 프로그램을 만드는 과정
+1. 스윙 프레임 만들기
+2. main() 메소드 작성
+3. 스윙 프레임에 스윙 컴포넌트 붙이기
+
+* 스윙 프로그램 작성에 필요한 import문
+    * import java.awt.*; // 그래픽 처리를 위한 클래스들의 경로명
+    * import java.awt.event.*; // AWT 이벤트 사용을 위한 경로명
+    * import javax.swing.*; // 스윙 컴포넌트 클래스들의 경로명
+    * import javax.swing.event.*; // 스윙 이벤트를 위한 경로명
+
+**스윙 프레임**  
+* 스윙 프레임 : 모든 스윙 컴포넌트를 담는 최상위 컨테이너
+    * JFrame을 상속받아 구현
+    * 컴포넌트들은 화면에 보이려면 스윙 프레임에 부착되어야 함
+        * 프레임을 닫으면 프레임에 부착된 모든 컴포넌트가 보이지 않게 됨
+* 스윙 프레임(JFrame) 기본 구성
+    * 프레임 – 스윙 프로그램의 기본 틀
+    * 메뉴바 – 메뉴들이 부착되는 공간
+    * 컨텐트팬 – GUI 컴포넌트들이 부착되는 공간  
+
+**프레임 만들기, JFrame 클래스 상속**  
+* 스윙 프레임
+    * JFrame 클래스를 상속받은 클래스 작성
+    * 프레임의 크기 반드시 지정 : setSize() 호출
+    * 프레임을 화면에 출력하는 코드 반드시 필요 : setVisible(true) 호출 
+
+**300x300 프레임 만들기**  
+
+~~~java
+import javax.swing.*;
+
+public class MyFrame extends JFrame{
+    public MyFrame() {
+        setTitle("300x300 Frame");
+        setSize(300,300);
+        setVisible(true);
+    }
+
+    public static void main(String[] args) {
+        MyFrame frame = new MyFrame();
+    }
+}
+
+~~~
+
+**프레임에 컴포넌트 붙이기**  
+* 타이틀 달기  
+    * super()나 setTitle()이용  
+* 컨텐트팬에 컴포넌트 달기  
+    * 컨텐트팬이란?  
+        * 스윙 컴포넌트들이 부착되는 공간  
 
 
+**컨텐트팬 예시**  
+~~~java
+import javax.swing.*;
+import java.awt.*;
+
+public class ContentPaneEx extends JFrame {
+    public ContentPaneEx() {
+        setTitle("ContentPane과 JFrame 예제"); 
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        
+        Container contentPane = getContentPane(); 
+        contentPane.setBackground(Color.ORANGE); 
+        contentPane.setLayout(new FlowLayout()); 
+            
+        contentPane.add(new JButton("OK")); 
+        contentPane.add(new JButton("Cancel")); 
+        contentPane.add(new JButton("Ignore")); 
+           
+        setSize(300, 150); 
+        setVisible(true); 
+        }
+    public static void main(String[] args) {
+        new ContentPaneEx();
+    }
+}
+
+~~~
 ## 4월 19일  
 **메소드 오버라이딩**  
 * 메소드 오버라이딩  
