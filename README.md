@@ -11,9 +11,9 @@
 1. 컬렉션은 제네릭(generics)기법으로 구현  
     * 제네릭  
         * 특정 타입만 다루지 않고, 여러 종류의 타입으로 변신할 수 있도록 클래스나 메소드를 일반화시키는 기법  
-        * 클래스나 인터페이스 이름에<E>,<k>,<v>등 타입매개변수 포함  
-    * 제네릭 컬렉션 사례:벡터 Vector<E>  
-        * <E>에서 E에 구체적ㅇ니 타입을 주어 구체적인 타입만 다루는 벡터로 활용  
+        * 클래스나 인터페이스 이름에 E, k, v등 타입매개변수 포함  
+    * 제네릭 컬렉션 사례: 벡터 Vector E 
+        * E에서 E에 구체적인 타입을 주어 구체적인 타입만 다루는 벡터로 활용  
         * 정수만 다루는 컬렉션 벡터 Vector<Integer>  
         * 문자열만 다루는 컬렉션 벡터 Vector<String>  
 2. 컬렉션의 요소는 객체만 가능  
@@ -23,8 +23,8 @@
 * 모든 종류의 데이터 타입을 다룰 수 있도록 일반화된 타입 매개 변수로 클래스(인터페이스)나 메소드를 작성하는 기법
 * C++의 템플릿(template)과 동일  
 
-**Vector<E>**  
-* 벡터 Vector<E>의 특성  
+**Vector E**  
+* 벡터 Vector E의 특성  
     * <E>에 사용할 요소의 특정 타입으로 구체화  
     * 배열을 가변 크기로 다룰 수 있게 하는 컨테이너  
         * 배열의 길이 제한 극복  
@@ -71,10 +71,63 @@ public class VectorEx {
 
 **ArrayList[E]**  
 * 가변 크기 배열을 구현한 클래스  
-    * <E>에 요소로 사용할 특정 타입으로 구체화
+    * E에 요소로 사용할 특정 타입으로 구체화
 * 벡터와 거의 동일  
     * 요소 삽입, 삭제, 검색 등 벡터 기능과 거의 동일
-    * 벡터와 달리 스레드 동기화 기능 없음
+    * 벡터와 달리 스레드 동기화 기능 없음  
+
+**컬렉션의 순차 검색을 위한 Iterator**  
+* Iterator E 인터페이스  
+    * 리스트 구조의 컬렉션에서 요소의 순차 검색을 위한 인터페이스  
+        * Vector E, ArrayList E, LinkedList E가 상속받는 인터페이스  
+
+* Iterator 객체 얻어내기  
+    * 컬렉션의 iterator() 메소드 호출  
+        * 해당 컬렉션을 순차 검색할 수 있는 Iterator 객체 리턴  
+
+**Iterator 사용 예시**
+~~~ java
+import java.util.*;
+public class IteratorEx {
+public static void main(String[] args) {
+
+    Vector<Integer> v = new Vector<Integer>();
+   
+    v.add(5); 
+    v.add(4); 
+    v.add(-1); 
+    v.add(2, 100); 
+    
+    Iterator<Integer> it = v.iterator(); 
+    
+    while(it.hasNext()) {
+        int n = it.next();
+         System.out.println(n);
+}
+
+    int sum = 0;
+    it = v.iterator(); 
+       
+    while(it.hasNext()) {
+        int n = it.next();
+        sum += n;
+        }
+        System.out.println("벡터에 있는 정수 합 : " + sum);
+    }
+}
+~~~
+
+**HashMap<K,V>**  
+* 키(key)와 값(value)의 쌍으로 구성되는 요소를 다루는 컬렉션  
+    * K : 키로 사용할 요소의 타입  
+    * V : 값으로 사용할 요소의 타입  
+    * 키와 값이 한 쌍으로 삽입  
+    * '값'을 검색하기 위해서는 반드시 '키' 이용  
+* 삽입 및 검색이 빠른 특징  
+    * 요소 삽입 : put() 메소드  
+    * 요소 검색 : get() 메소드  
+
+
 
 ## 4월 19일  
 **메소드 오버라이딩**  
