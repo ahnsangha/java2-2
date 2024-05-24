@@ -195,7 +195,7 @@ component.requestFocus(); // component에 포커스 강제 지정
     * 국제 산업 표준  
     * 전 세계의 문자를 컴퓨터에서 일관되게 표현하기 위한 코드 체계  
     * 문자들에 대해서만 키 코드 값 정의  
-        * A~Z, a~z, 0~9, !, @, & 등  
+        * A ~ Z, a ~ z, 0~9, !, @, & 등  
     * 문자가 아닌 키 경우에는 표준화된 키 코드 값 없음  
         * Function 키, Home 키, Up 키,Delete 키, Control 키, Shift
 키, Alt 등은 플랫폼에 따라 키 코드 값이 다를 수 있음  
