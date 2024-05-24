@@ -219,6 +219,66 @@ component.requestFocus(); // componen에 포커스 강제 지정
         * 입력된 키를 판별하기 위해 가상키(Virtual Key) 값과 비교하여야 함  
         * 가상 키 값은 KeyEvent 클래스에 상수로 선언  
 
+**KeyListener 활용 예제**
+~~~java
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
+
+public class KeyCharEx extends JFrame {
+    private JLabel la =
+    new JLabel("<Enter>키로 배경색이 바뀝니다");
+
+    public KeyCharEx() {
+        super("KeyListener의 문자 키 입력 예제");
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        Container c = getContentPane();
+    
+        c.setLayout(new FlowLayout());
+        c.add(la);
+        c.addKeyListener(new MyKeyListener());
+    
+        setSize(250, 150);
+        setVisible(true);
+    
+        c.setFocusable(true);
+        c.requestFocus(); 
+    }
+class MyKeyListener extends KeyAdapter {
+    public void keyPressed(KeyEvent e) {
+        int r = (int) (Math.random() * 256);
+        int g = (int) (Math.random() * 256);
+        int b = (int) (Math.random() * 256);
+       
+        switch(e.getKeyChar()) { 
+        case '\n':
+            la.setText("r=" + r + ", g=" + g + ", b=" + b);
+            getContentPane().setBackground(
+            new Color(r, g, b));
+            break;
+            
+            case 'q':
+            System.exit(0);
+        }
+    }
+}
+public static void main(String[] args) {
+    new KeyCharEx();
+    }
+}
+~~~
+
+**마우스 리스너 달기와 MouseEvent 객체 활용**  
+* 마우스 리스너 달기
+    * 마우스 리스너는 컴포넌트에 다음과 같이 등록  
+    **component.addMouseListener(myMouseListener);**  
+    * 컴포넌트가 마우스 무브(mouseMoved())나 마우스 드래깅(mouseDraggecd())을 함께 처리하고자 하면, MouseMotion 리스너 따로 등록  
+    **component.addMouseMotionListener(myMouseMotionListener);**  
+* MouseEvent 객체 활용
+    * 마우스 포인터의 위치, 컴포넌트 내 상대 위치
+        * int getX(), int getY()
+    * 마우스 클릭 횟수
+        * int getClickCount()
 
 ## 5월 17일
 **중간고사 채점 확인**
