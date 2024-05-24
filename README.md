@@ -177,7 +177,7 @@ import javax.swing.*;
     * 컴포넌트에 포커스 설정 방법 : 다음 2 라인 코드 필요  
 ~~~java
 component.setFocusable(true); // component가 포커스를 받을 수 있도록 설정
-component.requestFocus(); // componen에 포커스 강제 지정
+component.requestFocus(); // component에 포커스 강제 지정
 ~~~  
 * 자바플랫폼마다 실행 환경의 초기화가 서로 다를 수 있기 때문에 다음 코드가 필요함  
 **component.setFocusable(true);**
