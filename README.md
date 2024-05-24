@@ -112,7 +112,7 @@ import javax.swing.*;
         }
     }
 ~~~
-![Alt text](image.png)![Alt text](image-1.png)
+![Alt text](image-2.png)![Alt text](image-3.png)
 
 ## 5월 17일
 **중간고사 채점 확인**
