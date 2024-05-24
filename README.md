@@ -197,8 +197,8 @@ component.requestFocus(); // component에 포커스 강제 지정
     * 문자들에 대해서만 키 코드 값 정의  
         * A~Z, a~z, 0~9, !, @, & 등  
     * 문자가 아닌 키 경우에는 표준화된 키 코드 값 없음  
-        * <Function> 키, <Home> 키, <Up> 키,<Delete> 키, <Control> 키, <Shift>
-키, <Alt> 등은 플랫폼에 따라 키 코드 값이 다를 수 있음  
+        * Function 키, Home 키, Up 키,Delete 키, Control 키, Shift
+키, Alt 등은 플랫폼에 따라 키 코드 값이 다를 수 있음  
 * 유니코드 키가 입력되는 경우  
     * keyPressed(), keyTyped(), keyReleased() 가 순서대로 호출  
 * 유니코드 키가 아닌 경우  
