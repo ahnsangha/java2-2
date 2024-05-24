@@ -114,6 +114,112 @@ import javax.swing.*;
 ~~~
 ![Alt text](image-2.png)![Alt text](image-3.png)
 
+**내부 클래스로 Action 이벤트 리스너 만들기**
+~~~java
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
+
+    public class IndepClassListener extends JFrame {
+        public IndepClassListener() {
+        setTitle("Action 이벤트 리스너 예제");
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        
+        Container c = getContentPane();
+        c.setLayout(new FlowLayout());
+        JButton btn = new JButton("Action");
+        btn.addActionListener(new MyActionListener());
+        c.add(btn);
+        
+        setSize(250, 120);
+        setVisible(true);
+    }
+
+   private class MyActionListener implements ActionListener {
+        public void actionPerformed(ActionEvent e) {
+           JButton b = (JButton)e.getSource();
+           if(b.getText().equals("Action"))
+                b.setText("액션");
+           else
+               b.setText("Action");
+        
+               IndepClassListener.this.setTitle(b.getText());
+            }
+       }
+    public static void main(String [] args) {
+        new IndepClassListener();
+       }
+    }
+~~~
+![Alt text](image-4.png)![Alt text](image-5.png)
+* 버튼의 문자열이 타이틀에 출력됨
+
+**어댑터 클래스**  
+* 이벤트 리스너에 구현에 따른 부담
+    * 리스너의 추상 메소드를 모두 구현해야 하는 부담  
+    * 예 : 마우스 리스너에서 마우스가 눌러지는 경우(mousePressed())만 처리하고자 하는 경우에
+도 나머지 4개의 메소드를 모두 구현해야 하는 부담  
+* 어댑터 클래스  
+    * 리스너의 모든 메소드를 단순 리턴하도록 만든 클래스  
+* 추상 메소드가 하나뿐인 리스너는 어댑터 없음  
+    * ActionAdapter, ItemAdapter 클래스는 존재하지 않음  
+
+**key 이벤트와 포커스**  
+* 키 입력 시, 다음 세 경우 각각 key 이벤트 발생  
+    * 키를 누르는 순간  
+    * 누른 키를 때는 순간  
+    * 누른 키를 때는 순간(Unicode 키의 경우에만)  
+* 키 이벤트를 받을 수 있는 조건  
+    * 모든 컴포넌트  
+    * 현재 포커스(focus)를 가진 컴포넌트가 키 이벤트 독점  
+* 포커스(focus)  
+    * 컴포넌트나 응용프로그램이 키 이벤트를 독점하는 권한  
+    * 컴포넌트에 포커스 설정 방법 : 다음 2 라인 코드 필요  
+~~~java
+component.setFocusable(true); // component가 포커스를 받을 수 있도록 설정
+component.requestFocus(); // componen에 포커스 강제 지정
+~~~  
+* 자바플랫폼마다 실행 환경의 초기화가 서로 다를 수 있기 때문에 다음 코드가 필요함  
+**component.setFocusable(true);**
+
+**KeyListener**
+* 응용프로그램에서 KeyListener를 상속받아 키 리스너 구현
+* KeyListener의 3 개 메소드
+    * keyPressed
+    * keyReleased
+    * keyTyped  
+* 컴포넌트에 키 이벤트 리스너 달기  
+
+**유니코드(Unicode)키**  
+* 유니코드 키의 특징  
+    * 국제 산업 표준  
+    * 전 세계의 문자를 컴퓨터에서 일관되게 표현하기 위한 코드 체계  
+    * 문자들에 대해서만 키 코드 값 정의  
+        * A~Z, a~z, 0~9, !, @, & 등  
+    * 문자가 아닌 키 경우에는 표준화된 키 코드 값 없음  
+        * <Function> 키, <Home> 키, <Up> 키,<Delete> 키, <Control> 키, <Shift>
+키, <Alt> 등은 플랫폼에 따라 키 코드 값이 다를 수 있음  
+* 유니코드 키가 입력되는 경우  
+    * keyPressed(), keyTyped(), keyReleased() 가 순서대로 호출  
+* 유니코드 키가 아닌 경우  
+    * keyPressed(), keyReleased() 만 호출됨  
+
+**가상 키와 입력된 키 판별**
+* KeyEvent 객체  
+    * 입력된 키 정보를 가진 이벤트 객체  
+    * KeyEvent 객체의 메소드로 입력된 키 판별  
+* KeyEvent 객체의 메소드로 입력된 키 판별  
+    * char KeyEvent.getKeyChar()  
+        * 키의 유니코드 문자 값 리턴  
+        * Unicode 문자 키인 경우에만 의미 있음  
+        * 입력된 키를 판별하기 위해 문자 값과 비교하면 됨  
+    * int KeyEvent.getKeyCode()  
+        * 유니코드 키 포함  
+        * 모든 키에 대한 정수형 키 코드 리턴  
+        * 입력된 키를 판별하기 위해 가상키(Virtual Key) 값과 비교하여야 함  
+        * 가상 키 값은 KeyEvent 클래스에 상수로 선언  
+
+
 ## 5월 17일
 **중간고사 채점 확인**
 
