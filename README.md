@@ -1,7 +1,45 @@
 # 안상하 202130311
 
-## 5월 24일
+## 5월 31일
+**스윙 컴포넌트의 공통 메소드, JComponent의 메소드**
+* JComponent
+    * 스윙 컴포넌트는 모두 상속받는 슈퍼 클래스, 추상 클래스  
+    * 스윙 컴포넌트들이 상속받는 공통 메소드와 상수 구현  
+    * JComponent의 주요 메소드 사례  
+~~~java
+//컴포넌트의 모양과 관련된 메소드
+void setForeground(Color) //전경색 설정
+void setBackground(Color) //배경색 설정
+void setOpaque(boolean) //불투명성 설정
+void setFont(Font) //폰트 설정
+Font getFont()  // 폰트 리턴
 
+//컴포넌트 위치와 크기에 관련된 메소드
+int getWidth() //폭 리턴
+int getHeight() //높이 리턴
+int getX() //x 좌표 리턴
+int getY() //y 좌표 리턴
+Point getLocationOnScreen() //스크린 좌표상에서의 컴포넌트 좌표
+void setLocation(int, int) //위치 지정ㄴ
+void setSize(int, int) //크기 지정
+
+//컴포넌트 상태와 관련된 메소드
+void setEnabled(boolean) //컴포넌트 활성화/비활성화
+void setVisible(boolean) //컴포넌트 보이기/숨기기
+boolean isVisible() //컴포넌트의 보이는 상태 리턴
+
+//컨테이너를 위한 메소드
+Component add(Component) //자식 컴포넌트 추가
+void remove(Component) //자식 컴포넌트 제거
+void removeAll() //모든 자식 컴포넌트 제거
+Component[] getComponents() //자식 컴포넌트 배열 리턴
+Container getParent() //부모 컨테이너 리턴
+Container getTopLevelAncestor() //최상위 부모 컨테이너 리턴
+~~~
+
+ 
+
+## 5월 24일
 **이벤트 기반 프로그래밍**  
 * 이벤트의 발생에 의해 프로그램 흐름이 결정되는 방식  
     * 이벤트가 발생하면 이벤트를 처리하는 루틴(이벤트 리스너) 실행  
