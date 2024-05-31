@@ -37,8 +37,91 @@ Container getParent() //부모 컨테이너 리턴
 Container getTopLevelAncestor() //최상위 부모 컨테이너 리턴
 ~~~
 
- 
+**JButton으로 버튼 만들기**
+* JButton의 용도 
+    * 버튼 모양의 컴포넌트. 사용자로부터 명령을 입력 받기 위한 목적  
+    * 버튼은 클릭될 때 Action 이벤트 발생
 
+* 버튼 생성
+~~~java
+JButton() //빈 버튼
+JButton(Icon image) //이미지 버튼
+JButton(String text) //문자열 버튼
+JButton(String text, Icon image) //문자열과 이미지 모두 가진 버튼
+~~~
+
+**이미지 버튼 만들기**
+* 하나의 버튼에 3 개의 이미지 등록  
+    * 마우스 조작에 따라 3 개의 이미지 중 적절한 이미지 자동 출력  
+* 3 개의 버튼 이미지  
+    * normalIcon
+        * 버튼의 보통 상태(디폴트) 때 출력되는 이미지  
+        * 생성자에 이미지 아이콘 전달 혹은 JButton의 setIcon(normalIcon);  
+    * rolloverIcon  
+        * 버튼에 마우스가 올라갈 때 출력되는 이미지  
+        * 이미지 설정 메소드 : JButton의 setRolloverIcon(rolloverIcon);  
+    * pressedIcon  
+        * 버튼을 누른 상태 때 출력되는 이미지  
+        * 이미지 설정 메소드 : JButton의 setPressedIcon(pressedIcon);
+
+**JCheckBox로 체크박스 만들기**
+* JCheckBox의 용도
+    * 선택(selected)과 비선택(deselected)두 상태만 가지는 버튼
+* 체크박스 생성
+~~~java
+JCheckBox() //빈 체크박스
+JCheckBox(Icon image) //이미지 체크박스
+JCheckBox(Icon image, boolean selected) //이미지 체크박스
+JCheckBox(String text, Icon image) //문자열과 이미지를 가진 체크박스
+JCheckBox(String text, Icon image, boolean selected) //문자열과 이미지 체크박스
+// selected:true면 선택 상태로 초기화
+~~~
+
+**체크박스에 Item 이벤트 처리**
+* Item 이벤트
+    * 체크 박스의 선택 상태에 변화가 생길 때 발생하는 이벤트
+        * 사용자가 마우스나 키보드로 체크박스를 선택/해제할 때
+        * 프로그램에서 체크박스를 선택/해제하여 체크 상태에 변화가 생길 때
+        ~~~java
+        JCheckBox c = new JCheckBox("사과");
+        c.setSelected(true); // 선택 상태로 변경
+        ~~~
+    * 이벤트가 발생하면 ItemEvent 객체 생성
+    * ItemListner 리스너를 이용하여 이벤트 처리
+
+**JRadioButton으로 라디오버튼 만들기**  
+* JRadioButton의 용도  
+    * 버튼 그룹을 형성하고, 그룹에 속한 버튼 중 하나만 선택되는 라디오버튼  
+    * 체크박스와의 차이점  
+        * 체크 박스는 각각 선택/해제가 가능하지만, 라디오버튼은 그룹에 속한 버튼 중 하나만 선택
+
+* 라디오버튼 생성
+~~~java
+JRadioButton() //빈 라디오버튼
+JRadioButton(Icon image) //이미지 라디오버튼
+JRadioButton(Icon image, boolean selected) //이미지 라디오버튼
+JRadioButton(String text) //문자열 라디오버튼
+JRadioButton(String text, boolean selected) //문자열 라디오버튼
+JRadioButton(String text, Icon image) //문자열과 이미지를 가진 라디오버튼
+JRadioButton(String text, Icon image, boolean selected) //문자열과 이미지를 가진 라디오버튼
+~~~
+
+**라디오버튼 생성 및 Item 이벤트 처리**
+* 버튼 그룹과 라디오버튼 생성 과정
+1. 버튼 그룹 객체 생성
+2. 라디오버튼 생성
+3. 라디오버튼을 버튼 그룹에 삽입
+4. 라디오버튼을 컨테이너에 삽입
+
+* 라디오버튼에 Item 이벤트 처리 : ItemListener 리스너 이용  
+    * 라디오버튼이 선택/해제되어 상태가 달라지면, Item 이벤트 발생  
+        * 사용자가 마우스나 키보드로 선택 상태를 변경할 때  
+        * 프로그램에서 JRadioButton의 setSelected()를 호출하여 선택 상태를 변경할 때  
+**JTextField로 한 줄 입력 창 만들기**
+* JTextField
+    * 한 줄의 문자열을 입력 받는 창(텍스트필드)
+        * 텍스트 입력 도중 Enter키가 입력되면 Action 이벤트 발생
+        * 입력 가능한 문자 개수와 입력 창의 크기는 서로 다름
 ## 5월 24일
 **이벤트 기반 프로그래밍**  
 * 이벤트의 발생에 의해 프로그램 흐름이 결정되는 방식  
