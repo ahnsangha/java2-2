@@ -122,6 +122,35 @@ JRadioButton(String text, Icon image, boolean selected) //문자열과 이미지
     * 한 줄의 문자열을 입력 받는 창(텍스트필드)
         * 텍스트 입력 도중 Enter키가 입력되면 Action 이벤트 발생
         * 입력 가능한 문자 개수와 입력 창의 크기는 서로 다름
+
+* 텍스트필드 생성
+~~~java
+JTextField() //빈 텍스트필드
+JTextField(int cols) //입력 창의 열의 개수는 cols개인텍스트필드
+JTextField(String text) // text 문자열로 초기화된 텍스트필드
+JTextField(String text, int cols) //입력 창의 열의 개수는 cols개이고 text 문자열로 초기화된 텍스트필드 
+~~~
+
+**TextArea로 여러 줄의 입력 창 만들기**
+* JTextArea
+    * 여러 줄의 문자열을 입력받을 수 있는 창(텍스트영역)
+        * 스크롤바를 지원하지 않는다.
+        * JScrollPane 객체에 삽입하여 스크롤바 지원받음  
+
+* 생성자
+~~~java
+JTextArea() //빈 텍스트영역 
+JTextArea(int rows, int cols) //입력 창이 rows x cols개의 문자 크기인 텍스트영역 
+JTextArea(String text) //text 문자열로 초기화된 텍스트영역 
+JTextArea(String text, int rows, int cols) //입력 창이 rows x cols개의 문자 크기이며 text 문자열로 초기화된 텍스트영역 
+~~~
+
+**JList<E>**
+* JList E
+    * 하나 이상의 아이템을 보여주고 아이템을 선택하도록 하는 리스트  
+    * Java 7부터 제네릭 리스트로 바뀜
+        * E에 지정된 타입의 객체만 저장하는 리스트
+    * JScrollPane에 JList E를 삽입하여 스크롤 가능
 ## 5월 24일
 **이벤트 기반 프로그래밍**  
 * 이벤트의 발생에 의해 프로그램 흐름이 결정되는 방식  
