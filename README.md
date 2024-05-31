@@ -20,7 +20,7 @@ int getHeight() //높이 리턴
 int getX() //x 좌표 리턴
 int getY() //y 좌표 리턴
 Point getLocationOnScreen() //스크린 좌표상에서의 컴포넌트 좌표
-void setLocation(int, int) //위치 지정ㄴ
+void setLocation(int, int) //위치 지정
 void setSize(int, int) //크기 지정
 
 //컴포넌트 상태와 관련된 메소드
@@ -145,18 +145,73 @@ JTextArea(String text) //text 문자열로 초기화된 텍스트영역
 JTextArea(String text, int rows, int cols) //입력 창이 rows x cols개의 문자 크기이며 text 문자열로 초기화된 텍스트영역 
 ~~~
 
-**JList<E>**
+**JList E**
 * JList E
     * 하나 이상의 아이템을 보여주고 아이템을 선택하도록 하는 리스트  
     * Java 7부터 제네릭 리스트로 바뀜
         * E에 지정된 타입의 객체만 저장하는 리스트
     * JScrollPane에 JList E를 삽입하여 스크롤 가능
+
+* 리스트 생성
+~~~java
+JList<E>() //빈 리스트
+JList<E>(Vectorr listData) //벡터로부터 아이템을 공급받는 리스트
+JList<E>(Object [] listData) //배열로부터 아이템을 공급받는 리스트
+~~~
+
+**JComboBox E**
+
+* JComboBox<E>
+    * 텍스트필드와 버튼, 그리고 드롭다운 리스트로 구성되는 콤보박스  
+    * 드롭다운 리스트에서 선택한 것이 텍스트필드에 나타남  
+
+* 콤보박스 생성
+~~~java
+JComboBox<E>() //빈 콤보박스
+JComboBox<E>(Vector listData) //벡터로부터 아이템을 공급받는 콤보박스
+JComboBox<E>(Object [] listData) //배열로부터 아이템을 공급받는 콤보박스
+~~~
+  
+**메뉴 구성**  
+* 메뉴 만들기에 필요한 스윙 컴포넌트  
+    * 메뉴아이템 – JMenuItem  
+    * 메뉴 – JMenu  
+        * 여러 개의 메뉴 아이템을 가짐  
+    * 메뉴바 – JMenuBar  
+        * 여러 개의 메뉴를 붙이는 바이며, 프레임에 부착됨  
+    * 분리선  
+        * 메뉴아이템 사이의 분리선으로 separator라고 부름  
+        * JMenu의 addSeparator()를 호출하여 삽입함
+
+**메뉴아이템에 Action 이벤트 달기**
+* 메뉴아이템을 클릭하면 Action 발생
+    * 메뉴아이템은 사용자로부터 지시나 명령을 받는데 사용
+    * ActionListener 인터페이스로 리스너 작성
+    * 각 메뉴아이템마다 이벤트 리스너 설정  
+
+**팝업 다이얼로그, JOptionPane**  
+* 팝업 다이얼로그
+    * 사용자에게 메시지를 전달하거나 문자열을 간단히 입력받는 용도
+    * JOptionPane 클래스를 이용하여 생성
+        * static 타입의 간단한 메소드 이용
+* 입력 다이얼로그 - JOptionPane.showInputDialog()
+    * 한 줄을 입력 받는 다이얼로그
+
+**확인 다이얼로그**
+* 확인 다이얼로그 - JOptionPane.showConfirmDialog()
+    * 사용자로부터 Yes/No 응답을 입력 받는 다이얼로그
+
+**메시지 다이얼로그**
+* 메시지 다이얼로그 – showMessageDialog
+    * 단순 메시지를 출력하는 다이얼로그
+
+
 ## 5월 24일
 **이벤트 기반 프로그래밍**  
 * 이벤트의 발생에 의해 프로그램 흐름이 결정되는 방식  
     * 이벤트가 발생하면 이벤트를 처리하는 루틴(이벤트 리스너) 실행  
     * 실행될 코드는 이벤트의 발생에 의해 전적으로 결정  
-* 반대되는 개볌 : 배치 실행  
+* 반대되는 개념 : 배치 실행  
     * 프로그램의 개발자가 프로그램의 흐름을 결정하는 방식  
 * 이벤트 종류  
     * 사용자의 입력 : 마우스 드래그, 마우스 클릭, 키보드 누름 등  

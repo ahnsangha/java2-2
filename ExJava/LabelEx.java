@@ -9,9 +9,9 @@ public class LabelEx extends JFrame {
     c.setLayout(new FlowLayout());
     
         JLabel textLabel = new JLabel("제임스 고슬링 입니더!");
-        ImageIcon img = new ImageIcon("Yee.jpg");
+        ImageIcon img = new ImageIcon("C:/fridayJava/java2-2/lib/Yee.jpg");
         JLabel imageLabel = new JLabel(img);
-        ImageIcon icon = new ImageIcon("Yee.jpg");
+        ImageIcon icon = new ImageIcon("C:/fridayJava/java2-2/lib/Yee.jpg");
         JLabel label = new JLabel("커피한잔 하실래예, 전화주이소",
         icon, SwingConstants.CENTER);
        

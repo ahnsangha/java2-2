@@ -8,9 +8,9 @@ import java.awt.*;
         Container c = getContentPane();
         c.setLayout(new FlowLayout());
         
-        ImageIcon normalIcon = new ImageIcon("Yee.jpg");
-        ImageIcon rolloverIcon = new ImageIcon("Yee2.jpg");
-        ImageIcon pressedIcon = new ImageIcon("Yee3.jpg");
+        ImageIcon normalIcon = new ImageIcon("C:/fridayJava/java2-2/lib/Yee.jpg");
+        ImageIcon rolloverIcon = new ImageIcon("C:/fridayJava/java2-2/lib/Yee2.jpg");
+        ImageIcon pressedIcon = new ImageIcon("C:/fridayJava/java2-2/lib/Yee3.jpg");
         JButton btn = new JButton("call~~", normalIcon);
         btn.setPressedIcon(pressedIcon);
         btn.setRolloverIcon(rolloverIcon);
